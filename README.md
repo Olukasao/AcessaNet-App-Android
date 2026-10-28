@@ -26,3 +26,10 @@ export PATH=$JAVA_HOME/bin:$PATH
    `keytool -genkeypair -v -keystore acessanet-release.jks -alias acessanet -keyalg RSA -keysize 2048 -validity 10000`
 2. Crie `android/keystore.properties` (já ignorado pelo git) com `storeFile`, `storePassword`, `keyAlias`, `keyPassword`.
 3. `npm run android:release` (APK) ou `npm run android:bundle` (AAB para a Play, em `android/app/build/outputs/bundle/release/`).
+
+## Segurança e privacidade (resumo)
+- Links externos: só `acessanet.com.br` (e subdomínios), `acessanet.sgp.net.br` e `wa.me` (`src/native/externalLinks.js`). Outro domínio do gateway de pagamento precisa ser acrescentado ali de propósito.
+- CSP no build (`vite.config.js`): conexões só com `https://acessanet.com.br`; sem scripts inline.
+- Release com minify/R8 (`android/app/build.gradle`, regras em `proguard-rules.pro`); guarde o `mapping.txt` de cada versão publicada.
+- LGPD: link da Política de Privacidade no login e no Perfil; "Excluir minha conta e dados" abre e-mail para `contato@acessanet.com` (canal da página /lgpd do site). Na Play Console, informe https://acessanet.com.br/lgpd como política e como URL de exclusão de conta.
+- Git: repositório local, sem chaves nem builds (`.gitignore`). A keystore de upload deve ficar fora da pasta do projeto.
