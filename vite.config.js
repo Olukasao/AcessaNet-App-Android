@@ -29,7 +29,7 @@ const cspPlugin = {
   transformIndexHtml: (html) => html.replace("<head>", `<head>\n    <meta http-equiv="Content-Security-Policy" content="${csp}" />`)
 };
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   root: here,
   base: "./",
   plugins: [react(), cspPlugin],
@@ -43,9 +43,25 @@ export default defineConfig({
       }))
     ]
   },
-  server: { fs: { allow: [here, siteRoot] } },
+  server: {
+    fs: { allow: [here, siteRoot] },
+    proxy: Object.fromEntries(
+      ["/api", "/v1", "/chat-api"].map((prefix) => [
+        prefix,
+        {
+          target: "https://acessanet.com.br",
+          changeOrigin: true,
+          secure: true,
+          configure: (proxy) => proxy.on("proxyReq", (req) => req.removeHeader("origin"))
+        }
+      ])
+    )
+  },
   define: {
-    "import.meta.env.VITE_ACESSANET_API_URL": JSON.stringify(process.env.VITE_ACESSANET_API_URL || "https://acessanet.com.br")
+    // Dev web: caminho relativo + proxy abaixo (o servidor de produção só libera CORS para o site e o app).
+    "import.meta.env.VITE_ACESSANET_API_URL": JSON.stringify(
+      process.env.VITE_ACESSANET_API_URL ?? (command === "serve" ? "" : "https://acessanet.com.br")
+    )
   },
   build: { target: "es2020", outDir: "dist", emptyOutDir: true }
-});
+}));
