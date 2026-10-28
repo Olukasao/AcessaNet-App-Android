@@ -6,10 +6,10 @@ def keystoreFile = rootProject.file('keystore.properties')
 if (keystoreFile.exists()) keystoreProps.load(new FileInputStream(keystoreFile))
 
 android {
-    namespace = "br.com.acessanet.assinante"
+    namespace = "br.com.acessanet.portal"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "br.com.acessanet.assinante"
+        applicationId "br.com.acessanet.portal"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

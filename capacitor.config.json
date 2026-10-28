@@ -1,5 +1,5 @@
 {
-  "appId": "br.com.acessanet.assinante",
+  "appId": "br.com.acessanet.portal",
   "appName": "AcessaNet",
   "webDir": "dist",
   "android": { "allowMixedContent": false },

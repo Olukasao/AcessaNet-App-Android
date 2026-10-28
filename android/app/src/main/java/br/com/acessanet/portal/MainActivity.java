@@ -1,4 +1,4 @@
-package br.com.acessanet.assinante;
+package br.com.acessanet.portal;
 
 import com.getcapacitor.BridgeActivity;
 

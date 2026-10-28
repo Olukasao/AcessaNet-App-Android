@@ -3,7 +3,7 @@
 App Android (Capacitor 8 + React) da Central do Assinante. Reaproveita `../acessanet-lab/src/cliente`
 (telas, API e CSS) via alias `@site`, sem copiar código e sem alterar o site.
 
-- Nome: AcessaNet · pacote provisório: `br.com.acessanet.assinante` (trocar em `capacitor.config.json` e `android/app/build.gradle` antes de publicar)
+- Nome: AcessaNet · pacote: `br.com.acessanet.portal` (o mesmo cadastrado na Play Console; não muda depois de publicado)
 - API: `https://acessanet.com.br` (mude com `VITE_ACESSANET_API_URL`). O app não leva nenhum segredo; só o que a Central já usa.
 - Tokens da sessão ficam no Android Keystore (`src/native/secureTokens.js`).
 - Links externos (boleto, PIX, WhatsApp) abrem em Chrome Custom Tabs, só https.
