@@ -1,0 +1,338 @@
+/* ==========================================================================
+   Acabamento mobile do app AcessaNet. Só vale no app; o site não importa este arquivo.
+   Paleta: azul-escuro institucional, branco e ciano #00D4FF.
+   ========================================================================== */
+:root {
+  --app-navy: #050b1f;
+  --app-navy-2: #0a1b4a;
+  --app-cyan: #00d4ff;
+  --app-blue: #2f6bff;
+  --r-card: 20px;
+  --r-field: 14px;
+  --r-pill: 999px;
+  --app-ph: #5b6788;
+  --app-field-line: #7b89ab;
+}
+
+/* ---------- Login (rebranding): tela cheia azul-escura + painel inferior ---------- */
+html .login:not(.login-loading) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--app-navy);
+}
+
+html .login .login-brand {
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-height: 46dvh;
+  padding: calc(env(safe-area-inset-top, 0px) + var(--safe-area-inset-top, 0px) + 28px) 28px 56px;
+  text-align: center;
+  background: transparent;
+}
+
+html .login .login-brand-bg { background:
+  radial-gradient(120% 70% at 50% 0%, rgba(0, 212, 255, 0.22), transparent 60%),
+  radial-gradient(90% 60% at 100% 100%, rgba(47, 107, 255, 0.35), transparent 65%),
+  linear-gradient(180deg, #0a1b4a 0%, var(--app-navy) 100%); }
+
+html .login .login-brand-logo { align-self: center; margin-bottom: 26px; }
+html .login .login-brand-logo img { width: 210px; filter: drop-shadow(0 8px 26px rgba(0, 212, 255, 0.35)); }
+
+html .login .login-brand-copy { max-width: 340px; }
+html .login .login-brand-eyebrow { gap: 8px; padding: 6px 14px 6px 10px; font-size: 0.78rem; border-color: rgba(0, 212, 255, 0.35); }
+html .login .login-brand-dot { background: var(--app-cyan); box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2), 0 0 14px var(--app-cyan); }
+html .login .login-brand h2 { margin-top: 18px; font-size: 2.05rem; line-height: 1.04; }
+html .login .login-brand h2 span { background-image: linear-gradient(92deg, #ffffff 0%, var(--app-cyan) 55%, var(--app-blue) 100%); }
+html .login .login-brand-copy > p { margin: 12px auto 0; font-size: 0.95rem; line-height: 1.5; }
+html .login .login-brand-list,
+html .login .login-brand-support { display: none; }
+
+html .login .login-stage {
+  flex: 0 0 auto;
+  display: block;
+  margin-top: -32px;
+  padding: 0;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+html .login .login-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  gap: 16px;
+  padding: 26px 22px calc(26px + env(safe-area-inset-bottom, 0px) + var(--safe-area-inset-bottom, 0px));
+  border: 0;
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -18px 50px rgba(0, 0, 0, 0.35), inset 0 3px 0 var(--app-cyan);
+}
+
+html .login .login-head h1 { margin-top: 8px; font-size: 1.7rem; }
+html .login .login-head p { font-size: 0.92rem; }
+html .login .login-form input { min-height: 54px; font-size: 1rem; }
+html .login .login-submit,
+html .login .home-btn-primary {
+  min-height: 54px;
+  border: 0;
+  color: #fff;
+  background: linear-gradient(95deg, var(--app-blue) 0%, #1aa7ff 60%, var(--app-cyan) 120%);
+  box-shadow: 0 10px 28px rgba(0, 150, 255, 0.4);
+  font-size: 1rem;
+}
+html .login .login-back { display: none; }
+
+/* ---------- Topbar ---------- */
+.cliente-app .cliente-topbar { gap: 10px; padding-inline: 14px; }
+.cliente-app .cliente-topbar-title { min-width: 0; flex: 1 1 auto; }
+.cliente-app .cliente-topbar-title strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cliente-app .cliente-contract-chip,
+.cliente-app .cliente-contract-switcher-trigger { flex: 0 1 auto; max-width: 56vw; min-height: 40px; padding: 0 12px; }
+.cliente-app .cliente-contract-chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- Início: cabeçalho sem sobreposição ---------- */
+.cliente-app .home-header { align-items: center; gap: 12px; }
+.cliente-app .home-header-eyebrow { display: none; }
+.cliente-app .home-header-hello { margin-top: 0; font-size: 1.85rem; }
+.cliente-app .home-header-greeting p { margin-top: 6px; font-size: 0.92rem; }
+.cliente-app .home-header-actions { gap: 8px; }
+.cliente-app .home-icon-button { width: 42px; height: 42px; }
+
+/* ---------- Cabeçalho das páginas internas ---------- */
+.cliente-app .cliente-page-toolbar { align-items: flex-start; gap: 12px; }
+.cliente-app .cliente-page-toolbar h2 { font-size: 1.9rem; }
+
+/* ---------- Barra inferior ---------- */
+.cliente-app .cliente-bottom-nav {
+  padding: 8px 6px calc(8px + env(safe-area-inset-bottom, 0px) + var(--safe-area-inset-bottom, 0px));
+  gap: 0;
+  border-top: 1px solid rgba(0, 212, 255, 0.18);
+  background: rgba(5, 11, 31, 0.97);
+}
+.cliente-app .cliente-bottom-nav .cliente-nav-item { padding: 6px 2px; min-width: 0; }
+.cliente-app .cliente-bottom-nav .cliente-nav-item span {
+  max-width: 100%;
+  overflow: visible;
+  font-size: 0.64rem;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+.cliente-app .cliente-bottom-nav .cliente-nav-item.is-active { color: var(--app-cyan); }
+.cliente-app .cliente-content { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+
+/* Aviso offline acima da barra */
+.app-offline-banner { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+
+/* ---------- Faturas: abas com largura própria, sem sobreposição ---------- */
+.cliente-app .cliente-invoice-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  overflow: visible;
+}
+.cliente-app .cliente-invoice-tabs button {
+  min-width: 0;
+  min-height: 64px;
+  padding: 8px 4px;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+}
+
+/* ---------- Barra de rolagem invisível (a rolagem continua funcionando) ---------- */
+html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* ---------- Login: a Terra do site sobe atrás do painel branco ---------- */
+html .login .login-brand { min-height: 54dvh; padding-bottom: 128px; justify-content: flex-start; }
+html .login .login-brand-logo { margin-bottom: 22px; }
+html .login .login-brand-copy > p { display: none; }
+html .login .login-brand-copy { position: relative; z-index: 2; }
+.lp {
+  position: absolute;
+  left: -30%;
+  bottom: -62%;
+  width: 160%;
+  aspect-ratio: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+html .login .login-brand-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 11, 31, 0.5) 0%, transparent 32%, transparent 60%, rgba(5, 11, 31, 0.55) 100%);
+}
+html .login .login-brand-rings { display: none; }
+html .login .login-brand h2 { filter: drop-shadow(0 2px 14px rgba(5, 11, 31, 0.9)); }
+@media (max-height: 760px) {
+  .lp { bottom: -92%; }
+  html .login .login-brand-logo img { width: 170px; }
+  html .login .login-brand { padding-bottom: 96px; }
+}
+
+/* ==========================================================================
+   Rodada de design (analista): contraste, alvos de toque, barra, faturas etc.
+   ========================================================================== */
+
+/* ---------- Contraste: placeholders e bordas de campo ---------- */
+html .login input::placeholder,
+.cliente-app input::placeholder,
+.cliente-app textarea::placeholder { color: var(--app-ph); opacity: 1; }
+html .login .login-form input,
+.cliente-app .cliente-password-field input { border: 1.5px solid var(--app-field-line); border-radius: var(--r-field); }
+html .login .login-form input:focus,
+.cliente-app .cliente-password-field input:focus { border-color: var(--app-blue); }
+.cliente-app .cliente-invoice-heading small { color: #56627f; }
+
+/* ---------- Alvos de toque >= 44px ---------- */
+html .login .login-cpf-chip { padding: 5px 5px 5px 18px; }
+html .login .login-cpf-chip button { min-height: 44px; min-width: 44px; padding: 0 18px; }
+html .login .login-password-field,
+.cliente-app .cliente-password-field { position: relative; }
+html .login .login-password-toggle,
+.cliente-app .cliente-password-toggle {
+  min-width: 44px; min-height: 44px; width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.cliente-app .cliente-side-card-head a {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 6px 0 10px; margin-right: -6px;
+}
+.cliente-app .home-icon-button { width: 44px; height: 44px; min-width: 44px; }
+.cliente-app .cliente-attendance-actions button,
+.cliente-app .cliente-attendance-flow-card button.cliente-soft-action,
+.cliente-app .cliente-attendance-flow-card [class*="back"],
+.cliente-app .cliente-attendance-flow-card [class*="secondary"] { min-height: 48px; }
+
+/* ---------- Barra inferior ---------- */
+.cliente-app .cliente-bottom-nav {
+  box-shadow: none;
+  border-top: 1px solid rgba(0, 212, 255, 0.22);
+  background: #050b1f;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.cliente-app .cliente-bottom-nav .cliente-nav-item { gap: 3px; }
+.cliente-app .cliente-bottom-nav .cliente-nav-item span,
+.cliente-nav-item.is-compact span {
+  font-size: 0.7rem;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+.cliente-app .cliente-bottom-nav .cliente-nav-item { color: #a9b6d6; }
+@media (max-width: 374px) {
+  .cliente-app .cliente-bottom-nav { padding-inline: 2px; }
+  .cliente-app .cliente-bottom-nav .cliente-nav-item { padding-inline: 0; }
+  .cliente-app .cliente-bottom-nav .cliente-nav-item span,
+  .cliente-nav-item.is-compact span { font-size: 0.7rem; letter-spacing: -0.05em; }
+}
+@media (max-height: 700px) {
+  .cliente-app .cliente-bottom-nav { padding-top: 4px; padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px) + var(--safe-area-inset-bottom, 0px)); }
+  .cliente-app .cliente-bottom-nav .cliente-nav-item { padding-block: 3px; gap: 1px; min-height: 44px; }
+  .cliente-app .cliente-bottom-nav .cliente-nav-item svg { width: 22px; height: 22px; }
+  .cliente-app .cliente-content { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ---------- Login em altura baixa ---------- */
+html .login .login-stage { flex: 1 0 auto; display: flex; flex-direction: column; }
+html .login .login-card { flex: 1 0 auto; }
+html .login .login-form input { scroll-margin-block: 120px calc(var(--keyboard-height) + 150px); }
+@media (max-height: 700px) {
+  html .login .login-brand { min-height: 0; padding-top: calc(env(safe-area-inset-top, 0px) + 16px); padding-bottom: 84px; }
+  html .login .login-brand-logo { margin-bottom: 12px; }
+  html .login .login-brand-logo img { width: 140px; }
+  html .login .login-brand-eyebrow { display: none; }
+  html .login .login-brand h2 { margin-top: 0; font-size: 1.75rem; }
+  html .login .login-brand-bg::after {
+    background: linear-gradient(180deg, rgba(5, 11, 31, 0.62) 0%, rgba(5, 11, 31, 0.35) 45%, transparent 75%, rgba(5, 11, 31, 0.35) 100%);
+  }
+  html .login .login-card { gap: 12px; padding-top: 20px; }
+  html .login .login-head p { display: none; }
+}
+
+/* ---------- Faturas ---------- */
+.cliente-app .cliente-invoice-tabs { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); }
+.cliente-app .cliente-invoice-tabs button { min-height: 60px; padding: 8px 2px; font-size: 0.78rem; overflow-wrap: anywhere; hyphens: auto; }
+.cliente-app .cliente-invoice-tabs button span { min-width: 0; }
+.cliente-app .cliente-invoice-status { font-size: 0.75rem; }
+.cliente-app .cliente-invoice-card { padding-block: 16px; }
+.cliente-app .cliente-invoice-details { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; margin-top: 12px; }
+.cliente-app .cliente-invoice-details > div { min-width: 0; padding: 0; border: 0; }
+.cliente-app .cliente-invoice-details dt { font-size: 0.78rem; }
+.cliente-app .cliente-invoice-details dd { margin: 2px 0 0; overflow-wrap: anywhere; }
+
+/* ---------- Início ---------- */
+.cliente-app .home-header-hello { font-size: 1.7rem; }
+.cliente-app .home-header { padding-top: 8px; padding-bottom: 4px; margin-bottom: 8px; }
+.cliente-app .home-support-actions { display: flex; flex-direction: column; gap: 10px; }
+.cliente-app .home-support-actions .home-btn { width: 100%; justify-content: center; }
+.cliente-app .home-quick-item {
+  background: #eaf0fd;
+  border-color: #c3d1f0;
+  box-shadow: 0 6px 14px -10px rgba(10, 27, 74, 0.35);
+}
+.cliente-app .home-connection-plan { align-items: baseline; gap: 8px; line-height: 1; }
+.cliente-app .home-connection-plan-unit { line-height: 1; }
+.cliente-app .home-connection-footer .home-btn-text-onlight {
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: var(--r-pill);
+  padding-inline: 16px;
+  min-height: 44px;
+}
+
+/* ---------- Chamados / estados vazios ---------- */
+.cliente-app .cliente-notice.tone-success {
+  color: var(--app-navy-2);
+  background: #f1f4fb;
+  border-color: #cfd8ee;
+}
+.cliente-app .cliente-notice.tone-success svg { color: #5b6788; }
+.cliente-app .cliente-page-stack { min-height: 36dvh; align-content: start; }
+.cliente-app .cliente-page-stack > .cliente-notice { align-self: start; height: auto; }
+
+/* ---------- Perfil ---------- */
+.cliente-app .cliente-attendance-text-form { display: grid; gap: 18px; }
+.cliente-app .cliente-attendance-text-form label { display: block; margin-bottom: 6px; }
+.cliente-app .cliente-attendance-text-form small { display: block; margin-top: 6px; color: #56627f; }
+.cliente-app .cliente-danger-action { margin-top: 20px; width: 100%; }
+.cliente-app .cliente-contract-list + .cliente-danger-action { padding-top: 0; }
+
+/* ---------- Plano / Internet: linhas rótulo/valor mais baixas ---------- */
+.cliente-app .cliente-info-list > div { padding-block: 8px; min-height: 0; gap: 2px 12px; }
+.cliente-app .cliente-info-list dt { font-size: 0.78rem; }
+.cliente-app .cliente-info-list dd { font-size: 0.92rem; overflow-wrap: anywhere; }
+.cliente-app .cliente-panel { padding-block: 16px; }
+
+/* ---------- Chip de endereço da topbar ---------- */
+.cliente-app .cliente-contract-chip,
+.cliente-app .cliente-contract-switcher-trigger { max-width: 50vw; }
+@media (max-width: 360px) {
+  .cliente-app .cliente-contract-chip > svg,
+  .cliente-app .cliente-contract-switcher-trigger > svg { display: none; }
+}
+
+/* A barra inferior já é reservada no padding do conteúdo; evita rolagem à toa em telas curtas. */
+.cliente-app { padding-bottom: 0; }
+
+/* ---------- Privacidade (LGPD) e aviso de link bloqueado ---------- */
+.app-legal { margin: 0; font-size: 0.8rem; line-height: 1.45; color: #56627f; text-align: center; }
+.app-link { padding: 0; border: 0; background: none; color: var(--app-blue, #2f6bff); font: inherit; font-weight: 700; text-decoration: underline; min-height: 44px; }
+.app-privacy-text { margin: 0 0 12px; color: #56627f; font-size: 0.92rem; line-height: 1.45; }
+.app-privacy-row {
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 0 14px; margin-top: 8px;
+  border: 1px solid #c9d3ea; border-radius: var(--r-field, 14px); background: #fff; color: #0b1630; font: 700 0.95rem/1.2 "Manrope Variable", system-ui, sans-serif; text-align: left;
+}
+.app-privacy-row span { flex: 1; }
+.app-privacy-danger { color: #b3261e; border-color: rgba(179, 38, 30, 0.4); }
+.app-toast {
+  position: fixed; left: 16px; right: 16px; bottom: calc(92px + env(safe-area-inset-bottom, 0px)); z-index: 10000;
+  padding: 12px 16px; border-radius: 14px; background: #0b1b3d; color: #fff; border: 1px solid #ffc76b;
+  font: 600 0.9rem/1.3 "Manrope Variable", system-ui, sans-serif; text-align: center;
+}

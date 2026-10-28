@@ -1,0 +1,11 @@
+{
+  "appId": "br.com.acessanet.assinante",
+  "appName": "AcessaNet",
+  "webDir": "dist",
+  "android": { "allowMixedContent": false },
+  "plugins": {
+    "SplashScreen": { "launchShowDuration": 2500, "launchAutoHide": false, "backgroundColor": "#050b1f", "showSpinner": false },
+    "StatusBar": { "style": "DARK", "backgroundColor": "#050b1f" },
+    "Keyboard": { "resize": "body" }
+  }
+}

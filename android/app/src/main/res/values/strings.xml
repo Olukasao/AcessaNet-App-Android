@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AcessaNet</string>
+    <string name="title_activity_main">AcessaNet</string>
+    <string name="package_name">br.com.acessanet.assinante</string>
+    <string name="custom_url_scheme">br.com.acessanet.assinante</string>
+</resources>

@@ -1,0 +1,37 @@
+# Dependências e builds
+node_modules/
+dist/
+entrega/
+*.apk
+*.aab
+*.log
+.vite/
+
+# Android: build, SDK local e cópia dos assets web (gerada por `cap sync`)
+android/build/
+android/app/build/
+android/.gradle/
+android/.idea/
+android/local.properties
+android/capacitor-cordova-android-plugins/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/app/src/main/res/xml/config.xml
+
+# Assinatura e segredos: NUNCA versionar
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+keystore.properties
+**/keystore.properties
+google-services.json
+.env
+.env.*
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db
