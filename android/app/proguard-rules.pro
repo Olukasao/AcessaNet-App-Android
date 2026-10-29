@@ -20,10 +20,11 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# Capacitor e plugins: classes de plugin são achadas por reflexão (anotação @CapacitorPlugin / @PluginMethod).
--keep class com.getcapacitor.** { *; }
--keep @com.getcapacitor.annotation.CapacitorPlugin public class * { @com.getcapacitor.annotation.PluginMethod public <methods>; }
--keep class com.getcapacitor.plugin.** { *; }
--keep class com.whitestein.securestorage.** { *; }
+# Capacitor e plugins: o próprio Capacitor já entrega as regras necessárias (consumer rules): mantém as classes
+# que estendem Plugin e os métodos @PluginMethod, e o Android mantém os métodos @JavascriptInterface.
+# Não proteja pacotes inteiros aqui (ex.: com.getcapacitor.**): isso impede o R8 de otimizar o código e derruba a
+# "otimização de código DEX" no Play Console.
 -keepattributes *Annotation*, Signature, InnerClasses, EnclosingMethod
--keepclassmembers class * extends com.getcapacitor.Plugin { *; }
+
+# Ponte entre o JavaScript e o app (WebView): chamada por nome pelo WebView/androidx.webkit. Classe pequena, mantida por segurança.
+-keep class com.getcapacitor.MessageHandler { *; }
