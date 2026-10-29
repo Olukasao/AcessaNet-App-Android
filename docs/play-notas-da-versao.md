@@ -1,6 +1,6 @@
-# Notas da versão 1.0.9 (código 10)
+# Notas da versão 1.0.10 (código 11)
 
-Nome da versão: 1.0.9
+Nome da versão: 1.0.10
 
 <pt-BR>
 Novidades:
