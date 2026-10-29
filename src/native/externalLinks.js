@@ -1,6 +1,9 @@
 import { Browser } from "@capacitor/browser";
 import { Capacitor } from "@capacitor/core";
 
+// O window.open original, guardado antes de ser substituído por installExternalLinks (senão a versão web chamaria a si mesma).
+const originalWindowOpen = typeof window !== "undefined" && window.open ? window.open.bind(window) : null;
+
 const SAFE_PROTOCOLS = new Set(["https:", "http:"]);
 const SYSTEM_PROTOCOLS = new Set(["tel:", "mailto:"]);
 
@@ -45,7 +48,7 @@ export async function openExternal(rawUrl) {
     return;
   }
   if (Capacitor.isNativePlatform()) await Browser.open({ url: url.href });
-  else window.open(url.href, "_blank", "noopener,noreferrer");
+  else originalWindowOpen?.(url.href, "_blank", "noopener,noreferrer");
 }
 
 /** Links externos (boleto, PIX, WhatsApp, assinatura) abrem em Chrome Custom Tabs, só nos domínios permitidos. */

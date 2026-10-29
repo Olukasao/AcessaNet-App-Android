@@ -343,3 +343,21 @@ html .login { overflow: clip; }
 /* Rodapé de privacidade: o link é inline (o botão de 44px esticava a linha); a área de toque cresce sem mexer no espaçamento. */
 .app-legal { margin: 2px 0 0; line-height: 1.5; }
 .app-link { display: inline; min-height: 0; padding: 12px 4px; margin: -12px -4px; line-height: inherit; }
+
+/* ---------- Contraste (WCAG AA, 4,5:1) ----------
+   O azul da marca (#2f6bff) dá 4,49:1 sobre branco e o vermelho 3,9:1: ficam um tom mais escuros no app. */
+:root,
+.cliente-app,
+.cliente-login-page,
+.cliente-loading-screen {
+  --blue-500: #2a66f6;
+  --cliente-blue: #2a66f6;
+  --danger: #c0282e;
+}
+.cliente-app .cliente-attendance-card-head > span { color: #5f7086; }
+.cliente-app .home-badge.tone-red,
+.cliente-app .home-invoice-notice { color: #b3262c; }
+.cliente-app .cliente-primary-action,
+.cliente-app .home-btn-primary { background-color: #2a66f6; }
+.cliente-app .cliente-danger-action { color: #c0282e; border-color: rgba(192, 40, 46, 0.45); }
+.app-link, .login-eyebrow { color: #2a66f6; }
