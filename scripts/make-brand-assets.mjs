@@ -38,7 +38,10 @@ const centered = await sharp(SRC)
   .composite([{ input: softMask, blend: "dest-in" }])
   .png()
   .toBuffer();
-for (const name of ["splash", "splash-dark"]) {
-  await sharp(bg).composite([{ input: centered, gravity: "center" }]).png().toFile(`assets/${name}.png`);
-}
+// Uma única arte serve para claro/escuro (o app não tem tema escuro): evita gerar o dobro de imagens.
+// PNG com paleta + dithering mantém o degradê e reduz bastante o tamanho do app.
+await sharp(bg)
+  .composite([{ input: centered, gravity: "center" }])
+  .png({ palette: true, quality: 92, colours: 256, dither: 1, compressionLevel: 9 })
+  .toFile("assets/splash.png");
 console.log("ok");
