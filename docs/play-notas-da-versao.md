@@ -3,12 +3,12 @@
 Nome da versão: 1.0.6
 
 <pt-BR>
-Novidades desde a primeira versão:
+Novidades:
 • A tela atualiza sozinha: chamados e horário da visita aparecem e mudam sem precisar sair do app
-• Notificações quando uma visita técnica for agendada ou mudar de horário, e quando houver fatura vencida
+• Notificações quando a visita técnica for agendada ou mudar e quando houver fatura vencida
 • Mensagem "Atendimento realizado com sucesso!" ao concluir um chamado
-• Primeiro acesso mais seguro, com código enviado por e-mail
-• Excluir conta e dados e política de privacidade no Perfil
-• Novo ícone, tela de abertura e tela de entrada
-• Correções e melhorias de desempenho
+• Primeiro acesso com código enviado por e-mail
+• Excluir conta e política de privacidade no Perfil
+• Novo ícone e novas telas de abertura e entrada
+• Correções e melhorias
 </pt-BR>
