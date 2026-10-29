@@ -6,6 +6,7 @@ import { Network } from "@capacitor/network";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { Keyboard } from "@capacitor/keyboard";
+import PushManager from "./PushManager.jsx";
 
 const ROOT_PATHS = ["/cliente", "/cliente/", "/cliente/login", "/cliente/inicio"];
 
@@ -53,6 +54,7 @@ export default function NativeShell({ children }) {
 
   return (
     <>
+      <PushManager />
       {children}
       {online ? null : (
         <div className="app-offline-banner" role="status">Sem conexão com a internet. Verifique sua rede.</div>
