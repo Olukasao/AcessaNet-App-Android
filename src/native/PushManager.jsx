@@ -5,7 +5,12 @@ import { PushNotifications } from "@capacitor/push-notifications";
 import { clienteRequest, getApiBaseUrl, readTokens } from "@site/cliente/clienteApi.js";
 
 const TOKEN_KEY = "acessanet.push.token";
-const CHANNEL_ID = "chamados";
+const CHANNELS = [
+  { id: "chamados", name: "Chamados e visitas", description: "Avisos sobre os seus atendimentos, como a data e a hora da visita técnica" },
+  { id: "faturas", name: "Faturas e pagamentos", description: "Avisos sobre faturas vencidas" }
+];
+// Telas que uma notificação pode abrir (o servidor manda a rota; qualquer outra coisa é ignorada).
+const ALLOWED_ROUTES = new Set(["/cliente/chamados", "/cliente/faturas"]);
 
 function savedToken() {
   try {
@@ -73,14 +78,9 @@ export default function PushManager() {
           status = (await PushNotifications.requestPermissions()).receive;
         }
         if (status !== "granted") return;
-        await PushNotifications.createChannel({
-          id: CHANNEL_ID,
-          name: "Chamados e visitas",
-          description: "Avisos sobre os seus atendimentos, como a data e a hora da visita técnica",
-          importance: 4,
-          visibility: 1,
-          vibration: true
-        });
+        for (const channel of CHANNELS) {
+          await PushNotifications.createChannel({ ...channel, importance: 4, visibility: 1, vibration: true });
+        }
         await PushNotifications.register();
       } catch {
         // Firebase ainda não configurado neste build (sem google-services.json): o app segue normal, sem avisos
@@ -101,10 +101,11 @@ export default function PushManager() {
         if (text) showToast(text);
       })
     );
-    // Tocou na notificação: abre os chamados.
+    // Tocou na notificação: abre a tela do aviso (chamados ou faturas).
     track(
-      PushNotifications.addListener("pushNotificationActionPerformed", () => {
-        window.location.hash = "#/cliente/chamados";
+      PushNotifications.addListener("pushNotificationActionPerformed", (action) => {
+        const route = action?.notification?.data?.route;
+        window.location.hash = `#${ALLOWED_ROUTES.has(route) ? route : "/cliente/chamados"}`;
       })
     );
 
