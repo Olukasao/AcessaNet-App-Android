@@ -25,6 +25,11 @@ export default function NativeShell({ children }) {
     const handles = [];
     const track = (promise) => promise.then((h) => handles.push(h)).catch(() => {});
     track(Network.addListener("networkStatusChange", (s) => setOnline(s.connected)));
+    // Voltou para o app (saiu e entrou): a Central atualiza chamados e agendamento na hora.
+    track(CapApp.addListener("appStateChange", (state) => {
+      if (state.isActive) window.dispatchEvent(new Event("acessanet:resume"));
+    }));
+    track(CapApp.addListener("resume", () => window.dispatchEvent(new Event("acessanet:resume"))));
     void Network.getStatus().then((s) => setOnline(s.connected)).catch(() => {});
     track(Keyboard.addListener("keyboardWillShow", (info) => {
       document.documentElement.style.setProperty("--keyboard-height", `${info.keyboardHeight}px`);

@@ -99,6 +99,7 @@ export default function PushManager() {
       PushNotifications.addListener("pushNotificationReceived", (notification) => {
         const text = [notification.title, notification.body].filter(Boolean).join(": ");
         if (text) showToast(text);
+        window.dispatchEvent(new Event("acessanet:push-received"));
       })
     );
     // Tocou na notificação: abre a tela do aviso (chamados ou faturas).
