@@ -35,3 +35,7 @@ google-services.json
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Chaves de serviço do Firebase/Google: nunca versionar
+*-firebase-adminsdk-*.json
+*service-account*.json
