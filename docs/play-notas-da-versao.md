@@ -1,6 +1,6 @@
-# Notas da versão 1.0.10 (código 11)
+# Notas da versão 1.0.11 (código 12)
 
-Nome da versão: 1.0.10
+Nome da versão: 1.0.11
 
 <pt-BR>
 Novidades:
