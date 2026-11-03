@@ -15,10 +15,12 @@ import RouteErrorBoundary from "@site/components/RouteErrorBoundary.jsx";
 import NativeShell from "./native/NativeShell.jsx";
 import { installSecureTokenStorage } from "./native/secureTokens.js";
 import { installExternalLinks } from "./native/externalLinks.js";
+import { installCrashReporter } from "./native/crashReporter.js";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import "./app.css";
 import "./mobile-polish.css";
+import "./motion.css";
 
 async function start() {
   // Web em tela grande: mostra o app dentro de um quadro de celular.
@@ -28,6 +30,7 @@ async function start() {
     return;
   }
 
+  installCrashReporter();
   await installSecureTokenStorage();
   installExternalLinks();
 

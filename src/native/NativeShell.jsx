@@ -7,6 +7,10 @@ import { SplashScreen } from "@capacitor/splash-screen";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { Keyboard } from "@capacitor/keyboard";
 import PushManager from "./PushManager.jsx";
+import AppUpdateNotice from "./AppUpdateNotice.jsx";
+import ForceUpdateGate from "./ForceUpdateGate.jsx";
+import DeepLinks from "./DeepLinks.jsx";
+import usePageTransition from "./usePageTransition.js";
 
 const ROOT_PATHS = ["/cliente", "/cliente/", "/cliente/login", "/cliente/inicio"];
 
@@ -15,11 +19,12 @@ export default function NativeShell({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [online, setOnline] = useState(true);
+  usePageTransition();
 
   useEffect(() => {
     if (!Capacitor.isNativePlatform()) return undefined;
+    // Cor e recuo das barras do sistema ficam no código nativo (MainActivity.setupSystemBars); aqui só o estilo dos ícones.
     void StatusBar.setStyle({ style: Style.Dark }).catch(() => {});
-    void StatusBar.setBackgroundColor({ color: "#050b1f" }).catch(() => {});
     void SplashScreen.hide({ fadeOutDuration: 250 }).catch(() => {});
 
     const handles = [];
@@ -46,6 +51,11 @@ export default function NativeShell({ children }) {
     if (!Capacitor.isNativePlatform()) return undefined;
     let handle;
     void CapApp.addListener("backButton", () => {
+      // Atualização obrigatória aberta: Voltar só minimiza, não deixa navegar por trás da tela.
+      if (document.querySelector(".force-update")) {
+        void CapApp.minimizeApp();
+        return;
+      }
       const open = document.querySelector('[role="dialog"] button[aria-label*="echar"], .cliente-scrim');
       if (open instanceof HTMLElement) {
         open.click();
@@ -60,6 +70,9 @@ export default function NativeShell({ children }) {
   return (
     <>
       <PushManager />
+      <AppUpdateNotice />
+      <ForceUpdateGate />
+      <DeepLinks />
       {children}
       {online ? null : (
         <div className="app-offline-banner" role="status">Sem conexão com a internet. Verifique sua rede.</div>

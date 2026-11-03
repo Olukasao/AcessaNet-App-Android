@@ -1,0 +1,88 @@
+/*
+ * Animações do app: trocas de tela, toque, entrada de cartões, janelas e avisos.
+ * Só usa opacity e as propriedades individuais translate/scale (composição na GPU, sem recalcular layout e sem
+ * brigar com os `transform` que as telas já usam). Tudo desliga com "reduzir movimento" do sistema.
+ */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* O deslize lateral da troca de tela não pode criar barra de rolagem horizontal. */
+.cliente-main { overflow-x: clip; }
+
+/* ---------- Toque: o elemento "afunda" ao ser pressionado e volta com folga ---------- */
+.cliente-app :is(button, [role="button"], [role="radio"], summary, a.cliente-soft-action, a.cliente-primary-action, a.cliente-nav-item,
+    a.home-btn, a.home-icon-button, a.home-card, a[class*="home-"][class*="-card"], .cliente-contract-card, .cliente-issue-card, .cliente-period-option):not(:disabled) {
+  transition: scale 0.2s var(--motion-ease), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease, color 0.2s ease, opacity 0.2s ease;
+}
+.cliente-app :is(button, [role="button"], [role="radio"], summary, a.cliente-soft-action, a.cliente-primary-action, a.cliente-nav-item,
+    a.home-btn, a.home-icon-button, a.home-card, a[class*="home-"][class*="-card"], .cliente-contract-card, .cliente-issue-card, .cliente-period-option):not(:disabled):active {
+  scale: 0.965;
+  transition-duration: 0.08s;
+}
+/* Itens grandes (cartões) afundam menos. */
+.cliente-app :is(a.home-card, a[class*="home-"][class*="-card"], .cliente-contract-card, .cliente-issue-card):not(:disabled):active { scale: 0.985; }
+
+/* ---------- Navegação inferior: o ícone da aba ativa sobe e ganha mola ---------- */
+.cliente-app .cliente-bottom-nav .cliente-nav-item { transition: color 0.2s ease, background-color 0.28s ease, scale 0.2s var(--motion-ease); }
+.cliente-app .cliente-bottom-nav .cliente-nav-item svg { transition: scale 0.32s var(--motion-spring), translate 0.32s var(--motion-spring); }
+.cliente-app .cliente-bottom-nav .cliente-nav-item.is-active svg { scale: 1.14; translate: 0 -1px; }
+
+/* ---------- Entrada dos cartões (escalonada, só na primeira exibição) ---------- */
+@keyframes motion-rise {
+  from { opacity: 0; translate: 0 10px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes motion-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes motion-pop {
+  from { opacity: 0; translate: 0 14px; scale: 0.96; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+@keyframes motion-star {
+  0% { scale: 0.7; }
+  60% { scale: 1.25; }
+  100% { scale: 1; }
+}
+@keyframes motion-toast {
+  from { opacity: 0; translate: 0 18px; scale: 0.96; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+@keyframes motion-drop {
+  from { opacity: 0; translate: 0 12px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+.cliente-app :is(.home-main, .cliente-page-stack, .cliente-page-grid) > * { animation: motion-rise 0.42s var(--motion-ease) backwards; }
+.cliente-app :is(.home-main, .cliente-page-stack, .cliente-page-grid) > *:nth-child(2) { animation-delay: 0.05s; }
+.cliente-app :is(.home-main, .cliente-page-stack, .cliente-page-grid) > *:nth-child(3) { animation-delay: 0.1s; }
+.cliente-app :is(.home-main, .cliente-page-stack, .cliente-page-grid) > *:nth-child(4) { animation-delay: 0.15s; }
+.cliente-app :is(.home-main, .cliente-page-stack, .cliente-page-grid) > *:nth-child(5) { animation-delay: 0.2s; }
+.cliente-app :is(.home-main, .cliente-page-stack, .cliente-page-grid) > *:nth-child(n + 6) { animation-delay: 0.25s; }
+
+/* A tela de login e a entrada na Central aparecem com fade suave. */
+.cliente-app, .login { animation: motion-fade 0.35s ease backwards; }
+
+/* ---------- Janelas, avisos e cartão de avaliação ---------- */
+/* :where() = especificidade zero: janelas que já têm animação própria (ex.: troca de plano) mantêm a delas. */
+:where([role="dialog"]) { animation: motion-pop 0.28s var(--motion-ease) backwards; }
+:where(.cliente-scrim) { animation: motion-fade 0.22s ease backwards; }
+.app-toast { animation: motion-toast 0.36s var(--motion-spring) backwards; }
+.app-update-pill { animation: motion-pill 0.3s var(--motion-ease) backwards; }
+@keyframes motion-pill { from { opacity: 0; translate: 0 -10px; } }
+.app-offline-banner { animation: motion-drop 0.3s var(--motion-ease) backwards; }
+.cliente-rating { animation: motion-rise 0.45s var(--motion-ease) backwards; }
+.cliente-rating-star { transition: scale 0.18s var(--motion-spring), color 0.15s ease; }
+.cliente-rating-star:active { scale: 0.9; }
+.cliente-rating-star.is-on svg { animation: motion-star 0.3s var(--motion-spring); }
+
+/* ---------- Reduzir movimento (configuração do Android) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

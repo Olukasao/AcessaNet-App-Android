@@ -4,4 +4,12 @@
     <string name="title_activity_main">AcessaNet</string>
     <string name="package_name">br.com.acessanet.portal</string>
     <string name="custom_url_scheme">br.com.acessanet.portal</string>
+
+    <!-- Atalhos do ícone (pressionar e segurar) -->
+    <string name="shortcut_fatura_short">2ª via</string>
+    <string name="shortcut_fatura_long">2ª via da fatura</string>
+    <string name="shortcut_chamado_short">Abrir chamado</string>
+    <string name="shortcut_chamado_long">Abrir um chamado</string>
+    <string name="shortcut_wifi_short">Senha do Wi-Fi</string>
+    <string name="shortcut_wifi_long">Trocar a senha do Wi-Fi</string>
 </resources>

@@ -28,3 +28,9 @@
 
 # Ponte entre o JavaScript e o app (WebView): chamada por nome pelo WebView/androidx.webkit. Classe pequena, mantida por segurança.
 -keep class com.getcapacitor.MessageHandler { *; }
+
+# Relatório de erros do app: o Capacitor chama o plugin por reflexão.
+-keep class br.com.acessanet.portal.CrashReportPlugin { *; }
+-keep class br.com.acessanet.portal.AppUpdatePlugin { *; }
+# Números de linha nas pilhas dos erros; decodifique com o mapping-vX.Y.Z.txt da versão (entrega/).
+-keepattributes SourceFile,LineNumberTable

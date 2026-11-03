@@ -12,9 +12,41 @@ input, textarea, select { scroll-margin-bottom: calc(var(--keyboard-height) + 24
   border: 1px solid #00d4ff; font: 600 0.9rem/1.3 "Manrope Variable", system-ui, sans-serif; text-align: center;
 }
 
+/* Aviso de versão nova detectada pela própria Google Play: botão pequeno no topo. */
+.app-update-pill {
+  position: fixed; z-index: 11000; left: 50%; transform: translateX(-50%);
+  top: calc(max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px)) + 8px);
+  display: flex; align-items: center; max-width: calc(100% - 24px); border-radius: 999px;
+  background: #0b1b3d; border: 1px solid #00d4ff; color: #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  font-family: "Manrope Variable", system-ui, sans-serif;
+}
+.app-update-action {
+  display: flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 6px 0 14px; border: 0; background: transparent;
+  color: inherit; font: 700 0.82rem/1 "Manrope Variable", system-ui, sans-serif; white-space: nowrap;
+}
+.app-update-action svg { flex: none; color: #00d4ff; }
+.app-update-close {
+  display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%;
+  background: transparent; color: rgba(255, 255, 255, 0.7);
+}
+
 /* Teste no navegador de desktop: o app roda num iframe de celular (a media query usa a largura do iframe). */
 html.web-frame body { margin: 0; background: #0b1226; display: grid; place-items: center; min-height: 100vh; }
 .web-frame-device {
   width: 412px; height: min(880px, 94vh); border: 0; border-radius: 28px; background: #f4f7fd;
   box-shadow: 0 0 0 10px #060b19, 0 0 0 11px #1d2a4d, 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Atualização obrigatória (ForceUpdateGate): cobre o app inteiro até a pessoa atualizar. */
+.force-update {
+  position: fixed; inset: 0; z-index: 12000; display: grid; place-items: center; padding: 24px;
+  background: #050b1f; color: #fff; font-family: "Manrope Variable", system-ui, sans-serif;
+}
+.force-update-card { display: grid; justify-items: center; gap: 14px; max-width: 340px; text-align: center; }
+.force-update-card svg { color: #00d4ff; }
+.force-update-card h2 { margin: 0; font: 800 1.4rem/1.2 "Sora Variable", system-ui, sans-serif; }
+.force-update-card p { margin: 0; color: rgba(255, 255, 255, 0.78); font-size: 0.96rem; line-height: 1.5; }
+.force-update-action {
+  margin-top: 6px; min-height: 48px; padding: 0 28px; border: 0; border-radius: 999px;
+  background: #00d4ff; color: #04112b; font: 800 1rem/1 "Manrope Variable", system-ui, sans-serif;
 }

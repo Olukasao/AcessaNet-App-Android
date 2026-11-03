@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="segunda_via"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_fatura"
+        android:shortcutShortLabel="@string/shortcut_fatura_short"
+        android:shortcutLongLabel="@string/shortcut_fatura_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="acessanet://app/faturas"
+            android:targetClass="br.com.acessanet.portal.MainActivity"
+            android:targetPackage="br.com.acessanet.portal" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="abrir_chamado"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_chamado"
+        android:shortcutShortLabel="@string/shortcut_chamado_short"
+        android:shortcutLongLabel="@string/shortcut_chamado_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="acessanet://app/chamado"
+            android:targetClass="br.com.acessanet.portal.MainActivity"
+            android:targetPackage="br.com.acessanet.portal" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="senha_wifi"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_wifi"
+        android:shortcutShortLabel="@string/shortcut_wifi_short"
+        android:shortcutLongLabel="@string/shortcut_wifi_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="acessanet://app/wifi"
+            android:targetClass="br.com.acessanet.portal.MainActivity"
+            android:targetPackage="br.com.acessanet.portal" />
+    </shortcut>
+</shortcuts>

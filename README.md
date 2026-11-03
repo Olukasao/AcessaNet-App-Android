@@ -9,6 +9,15 @@ App Android (Capacitor 8 + React) da Central do Assinante. Reaproveita `../acess
 - Links externos (boleto, PIX, WhatsApp) abrem em Chrome Custom Tabs, só https.
 - Botão Voltar, status bar, teclado, splash e aviso de offline: `src/native/NativeShell.jsx`.
 
+## Clonar e compilar
+O app importa o código da Central do repositório do site. Clone os dois **lado a lado**:
+```
+git clone git@github.com:Olukasao/SiteAcessaNetV2.git acessanet-lab   # branch feat/contratacao-online
+git clone git@github.com:Olukasao/AcessaNet-App-Android.git
+cd acessanet-lab && npm ci && cd ../AcessaNet-App-Android && npm ci
+```
+Não vão para o git (cada máquina tem os seus): `android/keystore.properties` e a chave de assinatura, `android/app/google-services.json`, `.env`.
+
 ## Ambiente de build (já instalado nesta máquina)
 ```
 export JAVA_HOME=/home/noc/android-toolchain/jdk

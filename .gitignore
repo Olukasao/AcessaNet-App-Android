@@ -39,3 +39,6 @@ Thumbs.db
 # Chaves de serviço do Firebase/Google: nunca versionar
 *-firebase-adminsdk-*.json
 *service-account*.json
+
+# capturas de tela de conferencia local
+preview-*.png

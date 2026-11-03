@@ -1,12 +1,11 @@
-# Notas da versão 1.0.11 (código 12)
-
-Nome da versão: 1.0.11
-
 <pt-BR>
-Novidades:
-• Novo ícone do aplicativo
-• Ao abrir um chamado, escolha o horário preferencial de atendimento: manhã, tarde, noite ou integral
-• A tela atualiza sozinha: chamados e horário da visita aparecem e mudam sem precisar sair do app
-• Notificações quando a visita técnica for agendada ou mudar e quando houver fatura vencida
+Novidades da versão 1.0.21:
+• Aviso dentro do aplicativo quando uma nova versão estiver disponível, com acesso direto à atualização na Play Store
+• Atalhos no ícone: pressione e segure para ir direto à 2ª via da fatura, abrir um chamado ou trocar a senha do Wi-Fi
+• Ao abrir um chamado, deixe uma observação para a equipe, como um horário em que você não estará em casa
+• Avalie o atendimento com nota de 1 a 5 assim que seu chamado for encerrado
+• A visita técnica mostra o turno agendado: manhã, tarde ou noite
+• O status do chamado agora atualiza sozinho, sem precisar fechar o app
+• Animações mais fluidas nas trocas de tela, nos toques e nas janelas
 • Correções e melhorias
 </pt-BR>

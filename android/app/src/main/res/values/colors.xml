@@ -2,4 +2,6 @@
 <resources>
     <!-- Cor de destaque das notificações (azul da marca). -->
     <color name="acessanet_notification">#2A66F6</color>
+    <!-- Azul-marinho do app: aparece por trás das barras do sistema (status e navegação), que são transparentes. -->
+    <color name="acessanet_navy">#050B1F</color>
 </resources>

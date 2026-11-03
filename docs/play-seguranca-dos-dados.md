@@ -22,10 +22,13 @@ Baseado no que o app faz hoje (versão 1.0.4). Revise com o encarregado de dados
 | Mensagens | Outras mensagens no app (descrição do problema e chat com o atendimento) | **Opcional** (só quem abre atendimento) | Funcionalidade do app |
 | Atividade no app | Interações no app (telas vistas; copiar Pix/código de barras) | Obrigatório | Funcionalidade do app; Análises |
 | ID do dispositivo ou outros IDs | Token de notificações (Firebase Cloud Messaging) | **Opcional** (só se a pessoa permitir notificações) | Funcionalidade do app (avisos de visita e de fatura) |
+| Localização | **Localização precisa** (ponto da casa para a visita técnica) | **Opcional** (só quem toca em "Enviar localização da minha casa") | Funcionalidade do app |
+
+**Localização (desde a versão 1.0.29):** o app lê o GPS **uma vez**, quando a pessoa toca em "Usar minha localização" no chamado com visita agendada. Não há rastreamento nem leitura em segundo plano (sem `ACCESS_BACKGROUND_LOCATION`). O ponto é guardado nos nossos servidores, conferido pela equipe e, se aprovado, passado ao técnico como link de mapa na OS. Declarar: coletada = Sim, compartilhada = Não (o SGP é prestador de serviço), opcional = Sim, criptografada em trânsito = Sim, exclusão = pelo mesmo pedido de exclusão de dados.
 
 Nome, e-mail, telefone, endereço e dados financeiros chegam ao app a partir do cadastro da empresa; declaramos de forma conservadora porque o app os trata como parte da conta do assinante.
 
-**Não coletados:** localização, contatos, fotos e vídeos, áudio, arquivos, calendário, saúde, histórico de navegação, mensagens SMS, dados de falhas/diagnóstico (o app não usa SDK de análise de falhas).
+**Não coletados:** contatos, fotos e vídeos, áudio, arquivos, calendário, saúde, histórico de navegação, mensagens SMS, dados de falhas/diagnóstico (o app não usa SDK de análise de falhas).
 
 ## 3. Compartilhamento
 Responder **"Não"** para compartilhamento de todos os tipos, com esta justificativa interna:
@@ -44,8 +47,8 @@ Responder **"Não"** para compartilhamento de todos os tipos, com esta justifica
 - O que é apagado: a conta do app e os dados pessoais que a empresa não precisa guardar por lei. O contrato de internet não é cancelado por isso. (Confirmar com o jurídico o que deve ser retido por obrigação legal.)
 
 ## 6. Texto sugerido para a Política de Privacidade (página /lgpd do site)
-> **Aplicativo AcessaNet (Android).** Ao usar o aplicativo, tratamos seu CPF/CNPJ e senha para identificar você; seu nome, e-mail, telefone, endereço, contrato, faturas e chamados para mostrar as informações do seu serviço; e o histórico das telas acessadas para melhorar o atendimento. Se você permitir notificações, guardamos um identificador do seu aparelho (token de notificações do Firebase, da Google) apenas para avisar sobre visitas técnicas agendadas e faturas vencidas; você pode desativar as notificações a qualquer momento nas configurações do Android, e o identificador deixa de ser usado quando você sai da conta. Não coletamos sua localização, contatos, fotos nem dados de cartão. Seus dados trafegam criptografados e são tratados por prestadores que atuam em nosso nome (como a Google, para entrega das notificações), sem venda de dados. Para consultar, corrigir ou excluir seus dados, use o botão "Excluir minha conta e dados" no Perfil do aplicativo ou escreva para contato@acessanet.com.
+> **Aplicativo AcessaNet (Android).** Ao usar o aplicativo, tratamos seu CPF/CNPJ e senha para identificar você; seu nome, e-mail, telefone, endereço, contrato, faturas e chamados para mostrar as informações do seu serviço; e o histórico das telas acessadas para melhorar o atendimento. Se você permitir notificações, guardamos um identificador do seu aparelho (token de notificações do Firebase, da Google) apenas para avisar sobre visitas técnicas agendadas e faturas vencidas; você pode desativar as notificações a qualquer momento nas configurações do Android, e o identificador deixa de ser usado quando você sai da conta. Só coletamos a localização da sua casa se você tocar em \"Enviar localização da minha casa\" para ajudar o técnico na visita (uma única vez, sem rastrear seu trajeto, e a equipe confere o ponto antes de passá-lo ao técnico). Não coletamos contatos, fotos nem dados de cartão. Seus dados trafegam criptografados e são tratados por prestadores que atuam em nosso nome (como a Google, para entrega das notificações), sem venda de dados. Para consultar, corrigir ou excluir seus dados, use o botão "Excluir minha conta e dados" no Perfil do aplicativo ou escreva para contato@acessanet.com.
 
 ## 7. Antes de enviar
 - A política de privacidade publicada precisa ter o parágrafo acima (a Google confere se a política bate com a declaração).
-- Se o app passar a usar localização, câmera, análise de falhas ou outro SDK, atualize esta declaração antes de publicar a nova versão.
+- Se o app passar a usar câmera, análise de falhas ou outro SDK, atualize esta declaração antes de publicar a nova versão. (Localização já declarada acima.)

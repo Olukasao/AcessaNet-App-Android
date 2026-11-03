@@ -2,10 +2,27 @@
   "appId": "br.com.acessanet.portal",
   "appName": "AcessaNet",
   "webDir": "dist",
-  "android": { "allowMixedContent": false },
+  "android": {
+    "allowMixedContent": false
+  },
   "plugins": {
-    "SplashScreen": { "launchShowDuration": 2500, "launchAutoHide": false, "backgroundColor": "#050b1f", "showSpinner": false },
-    "StatusBar": { "style": "DARK", "backgroundColor": "#050b1f" },
-    "Keyboard": { "resize": "body" }
+    "SplashScreen": {
+      "launchShowDuration": 2500,
+      "launchAutoHide": false,
+      "backgroundColor": "#050b1f",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#00000000",
+      "overlaysWebView": true
+    },
+    "Keyboard": {
+      "resize": "body"
+    },
+    "SystemBars": {
+      "insetsHandling": "disable",
+      "style": "DARK"
+    }
   }
 }
